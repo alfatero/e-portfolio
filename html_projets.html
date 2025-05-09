@@ -25,20 +25,6 @@
       padding: 2rem;
     }
 
-     nav {
-      background-color: #003366;
-      padding: 0.5rem;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-
-
     .sae {
       background-color: white;
       margin-bottom: 2rem;
@@ -55,27 +41,26 @@
       padding-left: 1.5rem;
     }
 
+    .screenshots {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .screenshots img {
+      width: 30%;
+      min-width: 200px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
       background-color: #e0e0e0;
       font-size: 0.9rem;
-    }
-
-    .social-icons {
-      margin-top: 1rem;
-    }
-
-    .social-icons a {
-      margin: 0 10px;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .social-icons img {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
     }
   </style>
 </head>
@@ -85,26 +70,27 @@
     <p>Présentation des projets réalisés en 1ère année et des compétences développées</p>
   </header>
 
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="CV_relevé_de_notes.html">CV & Relevé</a>
-    <a href="Compétences.html">Compétences</a>
-    <a href="html_projets.html">Présentation des projets</a>
-  </nav>
-
   <main>
     <section class="sae" id="sae101">
       <h2>SAE 1.01 - Présentation cybersécurité</h2>
       <p>Exposé sur les méthodes de détection de virus par antivirus, y compris signature, heuristique, comportemental et sandboxing.</p>
       <p><strong>Compétences développées :</strong> AC11.02, AC13.01, CE1.02, CE3.05</p>
-      <a href="https://github.com/alfatero/SAE/tree/25f8cb3eb64f9f0424be993e8f6a175424a664da/SAE1.01">Lien github</a>
+      <div class="screenshots">
+        <img src="captures/sae101_1.png" alt="Capture SAE 1.01 - 1">
+        <img src="captures/sae101_2.png" alt="Capture SAE 1.01 - 2">
+        <img src="captures/sae101_3.png" alt="Capture SAE 1.01 - 3">
+      </div>
     </section>
 
     <section class="sae" id="sae102">
       <h2>SAE 1.02 - Mise en place d'un réseau local</h2>
       <p>Création et configuration d'un réseau d'entreprise sur EVE-NG avec routage inter-VLAN, serveur DHCP, et gestion des équipements Cisco.</p>
       <p><strong>Compétences développées :</strong> AC11.03, AC11.04, AC11.05, CE1.01, CE1.03</p>
-      <a href="https://github.com/alfatero/SAE/tree/25f8cb3eb64f9f0424be993e8f6a175424a664da/SAE_1.02">Lien github</a>
+      <div class="screenshots">
+        <img src="captures/sae102_1.png" alt="Capture SAE 1.02 - 1">
+        <img src="captures/sae102_2.png" alt="Capture SAE 1.02 - 2">
+        <img src="captures/sae102_3.png" alt="Capture SAE 1.02 - 3">
+      </div>
     </section>
 
     <section class="sae" id="sae103">
@@ -115,34 +101,39 @@
         <li>Heatmap Wifi : analyse de la couverture du bâtiment avec Acrylic HeatMapper.</li>
       </ul>
       <p><strong>Compétences développées :</strong> AC12.01, AC12.02, AC12.03, CE2.03</p>
-      <a href="https://github.com/alfatero/SAE/tree/25f8cb3eb64f9f0424be993e8f6a175424a664da/SAE_1.03">Lien github</a>
+      <div class="screenshots">
+        <img src="captures/sae103_1.png" alt="Capture SAE 1.03 - 1">
+        <img src="captures/sae103_2.png" alt="Capture SAE 1.03 - 2">
+        <img src="captures/sae103_3.png" alt="Capture SAE 1.03 - 3">
+      </div>
     </section>
 
     <section class="sae" id="sae104">
       <h2>SAE 1.04 - Page Web de CV</h2>
       <p>Création d’un mini-site web personnel en HTML/CSS, incluant CV, diplômes, expériences, et compétences sous forme de flexbox.</p>
       <p><strong>Compétences développées :</strong> AC13.04, AC13.06, CE3.01, CE3.03</p>
-      <a href="https://github.com/alfatero/SAE/tree/25f8cb3eb64f9f0424be993e8f6a175424a664da/SAE_1.04">Lien github</a>
+      <div class="screenshots">
+        <img src="captures/sae104_1.png" alt="Capture SAE 1.04 - 1">
+        <img src="captures/sae104_2.png" alt="Capture SAE 1.04 - 2">
+        <img src="captures/sae104_3.png" alt="Capture SAE 1.04 - 3">
+      </div>
     </section>
 
     <section class="sae" id="sae105">
       <h2>SAE 1.05 - Communication et culture</h2>
-      <p>La SAE 1.05 consiste à créer un outil de reporting en Python et PowerShell permettant d’analyser un répertoire pour identifier les 100 plus gros fichiers dépassant un certain seuil de taille, d’en générer une visualisation graphique interactive (camembert avec légendes), et de proposer la suppression de certains fichiers sélectionnés via un script PowerShell.</p>
+      <p>Projet non fourni, mais cette SAE est généralement dédiée à la présentation orale, rédaction technique, ou compréhension interculturelle.</p>
       <p><strong>Compétences développées :</strong> AC12.05, CE2.01, CE3.02</p>
-      <a href="https://github.com/alfatero/SAE/tree/25f8cb3eb64f9f0424be993e8f6a175424a664da/SAE1.05">Lien github</a>
+      <div class="screenshots">
+        <img src="captures/sae105_1.png" alt="Capture SAE 1.05 - 1">
+        <img src="captures/sae105_2.png" alt="Capture SAE 1.05 - 2">
+        <img src="captures/sae105_3.png" alt="Capture SAE 1.05 - 3">
+      </div>
     </section>
   </main>
 
   <footer>
     <p>Réalisé par Léandro Berge - BUT R&T IUT de Colmar</p>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/léandro-berge-8546a5332" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
-      </a>
-      <a href="https://github.com/alfatero" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-      </a>
-    </div>
   </footer>
 </body>
 </html>
+
