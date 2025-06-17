@@ -1,0 +1,167 @@
+<!-- sae1.03.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE 1.03 – Découverte d’un dispositif de transmission</title>
+  <!-- (styles identiques à la page SAE1.01) -->
+   <style>
+    :root {
+      --primary: #ffcc00;
+      --bg-dark: #0a0a23;
+      --bg-light: rgba(255,255,255,0.1);
+      --text-light: #fff;
+      --radius: 10px;
+      --gap: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(135deg, var(--bg-dark), #1a1a40);
+      color: var(--text-light);
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    nav {
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+    nav a { color: var(--text-light); margin: 0 1rem; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: var(--primary); }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: var(--bg-light);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    .hero h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.1rem; max-width: 800px; margin: auto; }
+
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; display: grid; grid-gap: var(--gap); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: var(--gap); }
+    .card { background: var(--bg-light); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .card h2 { color: var(--primary); margin-bottom: 1rem; }
+    .card ul { list-style: disc inside; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: var(--gap);
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      cursor: zoom-in;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* Lightbox style */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+    }
+    #lightbox:active { display: none; }
+
+    .btn-container { text-align: center; margin: 2rem 0; }
+    .btn { background: var(--primary); color: #000; padding: 0.8rem 2rem; text-decoration: none; font-weight: 600; border-radius: var(--radius); transition: opacity 0.3s; }
+    .btn:hover { opacity: 0.8; }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem 0;
+      background: rgba(0,0,0,0.8);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) { .hero h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+  </nav>
+  <section class="hero">
+    <h1>SAE 1.03 – Découverte d’un dispositif de transmission</h1>
+    <p>Étude de la couverture WiFi du bâtiment C de l’IUT de Colmar via Acrylic HeatMapper et simulation Packet Tracer pour analyser les réseaux 802.11a/g.</p>
+  </section>
+  <div class="container">
+    <div class="grid-2">
+      <div class="card">
+        <h2>Objectif & Contexte</h2>
+        <p>Réaliser des heatmaps de couverture WiFi, comparer mesures 802.11g et 802.11a, et simuler l’infrastructure sur Packet Tracer.</p>
+      </div>
+      <div class="card">
+        <h2>Compétences développées</h2>
+        <ul>
+          <li>CE2.02 : Démarche scientifique et mesures de signaux</li>
+          <li>AC12.01 : Analyse des signaux sans fil</li>
+          <li>AC12.03 : Déploiement d’outils de mesure (Acrylic)</li>
+          <li>AC12.05 : Vulgarisation et communication technique</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Apports professionnels</h2>
+        <ul>
+          <li>Collecte et analyse de données terrain</li>
+          <li>Utilisation d’outils de site survey</li>
+          <li>Interprétation de heatmaps et optimisation de positionnement</li>
+          <li>Simulation avancée sur Packet Tracer</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Problèmes rencontrés</h2>
+        <ul>
+          <li>Accès limité aux salles et calibration des plans</li>
+          <li>Extrapolation des mesures sur zones non couvertes</li>
+          <li>Configuration du contrôleur et de DHCP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Screenshots (cliquez pour agrandir)</h2>
+      <div class="gallery">
+        <img src="static/images/SAE1.03_capture1.png" alt="Heatmap 1er étage">
+        <img src="static/images/SAE1.03_capture2.png" alt="Heatmap Rez-de-chaussée">
+        <img src="static/images/SAE1.03_capture3.png" alt="Simulation Packet Tracer">
+      </div>
+    </div>
+    <div class="btn-container">
+      <a class="btn" href="https://github.com/alfatero/SAE/tree/main/SAE_1.03" target="_blank">Voir sur GitHub</a>
+    </div>
+  </div>
+  <!-- Lightbox overlay -->
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img src="#" alt="Zoomed Image">
+  </div>
+  <footer>© 2025 Léandro Berge</footer>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = lightbox.querySelector('img');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lbImage.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+</html>

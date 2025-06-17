@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE 2.01 – Construire un réseau</title>
+  <style>
+    :root {
+      --primary: #ffcc00;
+      --bg-dark: #0a0a23;
+      --bg-light: rgba(255,255,255,0.1);
+      --text-light: #fff;
+      --radius: 10px;
+      --gap: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(135deg, var(--bg-dark), #1a1a40);
+      color: var(--text-light);
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    nav {
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+    nav a { color: var(--text-light); margin: 0 1rem; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: var(--primary); }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: var(--bg-light);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    .hero h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.1rem; max-width: 800px; margin: auto; }
+
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; display: grid; grid-gap: var(--gap); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: var(--gap); }
+    .card { background: var(--bg-light); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .card h2 { color: var(--primary); margin-bottom: 1rem; }
+    .card ul { list-style: disc inside; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: var(--gap);
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      cursor: zoom-in;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+    }
+    #lightbox:active { display: none; }
+
+    .btn-container { text-align: center; margin: 2rem 0; }
+    .btn { background: var(--primary); color: #000; padding: 0.8rem 2rem; text-decoration: none; font-weight: 600; border-radius: var(--radius); transition: opacity 0.3s; }
+    .btn:hover { opacity: 0.8; }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem 0;
+      background: rgba(0,0,0,0.8);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) { .hero h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+  </nav>
+
+  <section class="hero">
+    <h1>SAE 2.01 – Construire un réseau</h1>
+    <p>Déploiement complet d’un réseau local avec VLAN, routage, services et règles de sécurité, en environnement virtualisé sous GNS3.</p>
+  </section>
+
+  <div class="container">
+    <div class="grid-2">
+      <div class="card">
+        <h2>Objectif & Contexte</h2>
+        <p>Mettre en place une infrastructure réseau complète avec segmentation IP, configuration de VLAN, routage inter-VLAN, et déploiement de services sur les serveurs tout en appliquant des mesures de sécurité réseau.</p>
+      </div>
+      <div class="card">
+        <h2>Compétences développées</h2>
+        <ul>
+          <li>AC21.01 : Configurer et dépanner le routage dynamique</li>
+          <li>AC21.04 : Déployer des services réseaux avancés</li>
+          <li>AC21.06 : Travailler en équipe et développer ses compétences professionnelles</li>
+          <li>CE1.02 : Appliquer les principes de sécurité informatique</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>Travaux réalisés</h2>
+        <ul>
+          <li>Création des VLANs (Administration, Développement, Administrateurs)</li>
+          <li>Routage inter-VLAN et équilibrage Spanning-Tree</li>
+          <li>Attribution des adresses IP en VLSM</li>
+          <li>Routage dynamique via RIP v2</li>
+          <li>Déploiement des services FTP, Web (Apache), Rsync et DHCP</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Sécurité et filtrage</h2>
+        <ul>
+          <li>Port-security sur les commutateurs (1 seul hôte autorisé par port)</li>
+          <li>ACL sur le routeur interne (HTTP, SSH, Rsync uniquement)</li>
+          <li>ACL de bordure autorisant uniquement ICMP et HTTP en entrée</li>
+          <li>Connexion simulée vers l’extérieur avec le Cloud GNS3</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Captures (cliquez pour agrandir)</h2>
+      <div class="gallery">
+        <img src="static/images/SAE2.01_capture1.png" alt="Topologie réseau GNS3">
+        <img src="static/images/SAE2.01_capture2.png" alt="Configuration des VLANs">
+        <img src="static/images/SAE2.01_capture3.png" alt="Configuration des ACL et services">
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <a class="btn" href="https://github.com/alfatero/SAE/tree/main/SAE2.01" target="_blank">Voir sur GitHub</a>
+    </div>
+  </div>
+
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img src="#" alt="Zoomed Image">
+  </div>
+
+  <footer>© 2025 Léandro Berge</footer>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = lightbox.querySelector('img');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lbImage.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Projets SAE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ffcc00;
+      --bg-dark: #0a0a23;
+      --bg-light: rgba(255,255,255,0.1);
+      --text-light: #fff;
+      --radius: 12px;
+      --gap: 20px;
+      --transition: 0.3s;
+      --font-main: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: linear-gradient(135deg, var(--bg-dark), #1a1a40);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: var(--gap);
+    }
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem;
+      transition: color var(--transition);
+    }
+    nav a:hover { color: var(--primary); }
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: var(--gap);
+      color: var(--primary);
+      animation: fadeIn 0.8s ease;
+    }
+    /* Compétences */
+    .competences {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      animation: fadeInUp 0.8s ease;
+    }
+    .competences h2 {
+      font-size: 2rem;
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: var(--gap);
+    }
+    .competences .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: var(--gap);
+    }
+    .competence {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform var(--transition);
+    }
+    .competence:hover { transform: translateY(-5px); }
+    .competence h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    .competence ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    .competence li {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+    /* Filtrage et Projets */
+    .filter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: var(--gap);
+    }
+    .filter select {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--bg-light);
+      color: var(--text-light);
+      font-size: 1rem;
+      appearance: none;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .filter select option {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+    .filter select:hover { background: rgba(255,255,255,0.2); }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: var(--gap);
+    }
+    .project {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform var(--transition);
+      display: flex;
+      flex-direction: column;
+      animation: fadeInUp 0.8s ease;
+    }
+    .project:hover { transform: translateY(-5px); }
+    .project img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .project-content h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .project-content p { flex: 1; font-size: 0.95rem; margin-bottom: 1rem; }
+    .project-content a {
+      display: inline-block;
+      padding: 0.7rem 1.2rem;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .project-content a:hover { background: #e6b800; transform: translateY(-2px); }
+    .hidden { display: none !important; }
+    footer {
+      padding: 1rem 0;
+      background: rgba(0,0,0,0.8);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 800px) {
+      h1 { font-size: 2rem; }
+      .filter { flex-direction: column; }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Mes Projets SAE</h1>
+
+    <!-- Section Compétences -->
+    <section class="competences">
+      <h2>Compétences du Tronc Commun</h2>
+      <div class="grid">
+        <div class="competence">
+          <h3>Administrer les réseaux et l'Internet (CE1)</h3>
+          <ul>
+            <li>SAE 1.01 : Sensibilisation à l'hygiène informatique et à la cybersécurité</li>
+            <li>SAE 1.02 : S'initier aux réseaux informatiques</li>
+            <li>SAE 2.01 : Construire un réseau informatique pour une petite structure</li>
+          </ul>
+        </div>
+        <div class="competence">
+          <h3>Connecter les entreprises et les usagers (CE2)</h3>
+          <ul>
+            <li>SAE 1.03 : Découvrir un dispositif de transmission</li>
+            <li>SAE 2.02 : Mesurer et caractériser un signal ou un système</li>
+          </ul>
+        </div>
+        <div class="competence">
+          <h3>Créer des outils et applications informatiques (CE3)</h3>
+          <ul>
+            <li>SAE 1.04 : Se présenter sur internet</li>
+            <li>SAE 1.05 : Traiter les données</li>
+            <li>SAE 2.03 : Mettre en place une solution informatique pour l'entreprise</li>
+            <li>SAE 2.04 : Projet intégratif</li>
+            <li>SAE 2.05 : E-portfolio</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="filter">
+      <label for="semestre">Filtrer par semestre :</label>
+      <select id="semestre" onchange="filtrer()">
+        <option value="all">Tous</option>
+        <option value="S1">Semestre 1</option>
+        <option value="S2">Semestre 2</option>
+        <option value="S3">Semestre 3</option>
+        <option value="S4">Semestre 4</option>
+        <option value="S5">Semestre 5</option>
+        <option value="S6">Semestre 6</option>
+      </select>
+    </div>
+    <div class="projects">
+      <!-- START PROJETS LIST -->
+      <div class="project" data-semestre="S1">
+        <img src="static/images/SAE1.01.jpg" alt="SAE 1.01">
+        <div class="project-content">
+          <h3>SAE 1.01 - Sensibilisation à l'hygiène informatique et à la cybersécurité</h3>
+          <p>Présentation des antivirus et fonctionnement des analyses de détection de virus.</p>
+          <a href="sae101.html">Voir les détails</a>
+        </div>
+      </div>
+      <div class="project" data-semestre="S1">
+        <img src="static/images/SAE1.02.jpg" alt="SAE 1.02">
+        <div class="project-content">
+          <h3>SAE 1.02 - S'initier aux réseaux informatiques</h3>
+          <p>Création d'une infrastructure réseau simple avec VLAN sur EVE-NG.</p>
+          <a href="sae102.html">Voir les détails</a>
+        </div>
+      </div>
+      <div class="project" data-semestre="S1">
+        <img src="static/images/SAE1.03.jpg" alt="SAE 1.03">
+        <div class="project-content">
+          <h3>SAE 1.03 - Découvrir un dispositif de transmission</h3>
+          <p>Mesures de couverture Wifi (heatmap) avec Acrylic et simulations réseau sur Packet Tracer.</p>
+          <a href="sae103.html">Voir les détails</a>
+        </div>
+      </div>
+      <div class="project" data-semestre="S1">
+        <img src="static/images/SAE1.04.png" alt="SAE 1.04">
+        <div class="project-content">
+          <h3>SAE 1.04 - Se présenter sur internet</h3>
+          <p>Création d'une page web en HTML/CSS pour se présenter de manière professionnelle.</p>
+          <a href="sae104.html">Voir les détails</a>
+        </div>
+      </div>
+      <div class="project" data-semestre="S1">
+        <img src="static/images/SAE1.05.png" alt="SAE 1.05">
+        <div class="project-content">
+          <h3>SAE 1.05 - Traiter les données</h3>
+          <p>Développer un outil dit de « reporting » capable d’analyser tous les fichiers d’une arborescence (100 plus gros fichiers).</p>
+          <a href="sae105.html">Voir les détails</a>
+        </div>
+      </div>
+      <div class="project" data-semestre="S2">
+        <img src="static/images/SAE2.01.jpg" alt="SAE 2.01">
+        <div class="project-content">
+          <h3>SAE 2.01 - Construire un réseau informatique pour une petite structure</h3>
+          <p>Création d'un réseau contenant des VLAN et divers services (DHCP, NAT, routage RIP ...) sur GNS3.</p>
+          <a href="sae201.html">Voir les détails</a>
+        </div>
+      </div>
+      <div class="project" data-semestre="S2">
+        <img src="static/images/SAE2.02.jpg" alt="SAE 2.02">
+        <div class="project-content">
+          <h3>SAE 2.02 - Mesurer et caractériser un signal ou un système</h3>
+          <p>Création d'une web-radio à partir d'un ESP-32 contrôlable depuis le téléphone via MQTT.</p>
+          <p>A venir</p>
+        </div>
+      </div>
+      <div class="project" data-semestre="S2">
+        <img src="static/images/SAE2.03.jpg" alt="SAE 2.03">
+        <div class="project-content">
+          <h3>SAE 2.03 - Mettre en place une solution informatique pour l'entreprise</h3>
+          <p>Mise en place d'un site web incluant des CRUD et déploiement sur NGINX avec MySQL.</p>
+          <p>A venir</p>
+        </div>
+      </div>
+      <div class="project" data-semestre="S2">
+        <img src="static/images/SAE2.04.png" alt="SAE 2.04">
+        <div class="project-content">
+          <h3>SAE 2.04 - Projet intégratif</h3>
+          <p>Projet regroupant tous les thèmes vus lors de la première année.</p>
+          <p>A venir</p>
+        </div>
+      </div>
+      <div class="project" data-semestre="S2">
+        <img src="static/images/SAE2.05.png" alt="SAE 2.05">
+        <div class="project-content">
+          <h3>SAE 2.05 - E-portfolio</h3>
+          <p>Création de ce portfolio.</p>
+          <p>A venir</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    © 2025 Léandro Berge
+  </footer>
+  <script>
+    function filtrer() {
+      const select = document.getElementById('semestre');
+      const semestre = select.value;
+      document.querySelectorAll('.project').forEach(projet => {
+        projet.classList.toggle('hidden', semestre !== 'all' && projet.dataset.semestre !== semestre);
+      });
+    }
+  </script>
+</body>
+</html>

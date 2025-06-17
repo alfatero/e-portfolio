@@ -1,0 +1,167 @@
+<!-- sae1.04.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAE 1.04 – Se présenter sur Internet</title>
+  <!-- (styles identiques à la page SAE1.01) -->
+   <style>
+    :root {
+      --primary: #ffcc00;
+      --bg-dark: #0a0a23;
+      --bg-light: rgba(255,255,255,0.1);
+      --text-light: #fff;
+      --radius: 10px;
+      --gap: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(135deg, var(--bg-dark), #1a1a40);
+      color: var(--text-light);
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    nav {
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+    nav a { color: var(--text-light); margin: 0 1rem; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: var(--primary); }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: var(--bg-light);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    .hero h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.1rem; max-width: 800px; margin: auto; }
+
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; display: grid; grid-gap: var(--gap); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: var(--gap); }
+    .card { background: var(--bg-light); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .card h2 { color: var(--primary); margin-bottom: 1rem; }
+    .card ul { list-style: disc inside; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: var(--gap);
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      cursor: zoom-in;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+    }
+    #lightbox:active { display: none; }
+
+    .btn-container { text-align: center; margin: 2rem 0; }
+    .btn { background: var(--primary); color: #000; padding: 0.8rem 2rem; text-decoration: none; font-weight: 600; border-radius: var(--radius); transition: opacity 0.3s; }
+    .btn:hover { opacity: 0.8; }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem 0;
+      background: rgba(0,0,0,0.8);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) { .hero h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+  </nav>
+  <section class="hero">
+    <h1>SAE 1.04 – Se présenter sur Internet</h1>
+    <p>Création d’un site CV en ligne présentant mes compétences, formation et expériences professionnelles, avec navigation par ancres et bonnes pratiques Web.</p>
+  </section>
+  <div class="container">
+    <div class="grid-2">
+      <div class="card">
+        <h2>Objectif & Contexte</h2>
+        <p>Réaliser un site CV multi-sections (Compétences, Formation, Expériences), navigation fluide via ancres et un seul fichier CSS partagé.</p>
+      </div>
+      <div class="card">
+        <h2>Compétences développées</h2>
+        <ul>
+          <li>AC13.04 : Connaissance de l’architecture et technologies web</li>
+          <li>AC13.02 : Création et modification de pages HTML/CSS</li>
+          <li>AC13.06 : Travail collaboratif et export de projets</li>
+          <li>CE3.01 : Communication technique et adaptabilité</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Apports professionnels</h2>
+        <ul>
+          <li>Structuration de contenus Web</li>
+          <li>Implémentation de navigation par ancres et comportement scroll smooth</li>
+          <li>Optimisation responsive design</li>
+          <li>Gestion centralisée d’un fichier CSS global</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Problèmes rencontrés</h2>
+        <ul>
+          <li>Tests de liens relatifs sans Codepen Pro</li>
+          <li>Maintien cohérent des ancres et noms d’ID</li>
+          <li>Compatibilité mobile et gestion du scroll smooth</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Screenshots (cliquez pour agrandir)</h2>
+      <div class="gallery">
+        <img src="static/images/SAE1.04_capture1.png" alt="Page index CV">
+        <img src="static/images/SAE1.04_capture2.png" alt="Page formation">
+        <img src="static/images/SAE1.04_capture3.png" alt="Page expériences">
+      </div>
+    </div>
+    <div class="btn-container">
+      <a class="btn" href="https://github.com/alfatero/SAE/tree/main/SAE1.04" target="_blank">Voir sur GitHub</a>
+    </div>
+  </div>
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img src="#" alt="Zoomed Image">
+  </div>
+  <footer>© 2025 Léandro Berge</footer>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = lightbox.querySelector('img');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lbImage.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+</html>
