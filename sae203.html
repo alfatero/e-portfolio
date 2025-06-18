@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAE 2.03 – Gestion d’un Drive</title>
+
+  <style>
+    :root {
+      --primary: #ffcc00;
+      --bg-dark: #0a0a23;
+      --bg-light: rgba(255, 255, 255, 0.1);
+      --text-light: #fff;
+      --radius: 10px;
+      --gap: 24px;
+    }
+
+    /* RESET */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* GÉNÉRAL */
+    html { scroll-behavior: smooth; }
+    body  {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, var(--bg-dark), #1a1a40);
+      font-family: "Segoe UI", sans-serif;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.65);
+    }
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;       /* centrage horizontal */
+    }
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;   /* animation de couleur */
+    }
+    nav a:hover {
+      color: var(--primary);          /* couleur au survol */
+    }
+
+    /* HERO */
+    .hero {
+      padding: 2rem 1rem 4rem;
+      text-align: center;
+      background: var(--bg-light);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw + 1rem, 3rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .hero p { max-width: 850px; margin: auto; font-size: 1.1rem; }
+    .hero p + p { margin-top: 0.75rem; font-style: italic; }
+
+    /* LAYOUT PRINCIPAL */
+    main { flex: 1; }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: grid;
+      row-gap: var(--gap);
+    }
+
+    /* GRILLES RÉPONSIVES */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--gap);
+    }
+
+    /* CARTES */
+    .card {
+      background: var(--bg-light);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+    }
+    .card h2 { color: var(--primary); margin-bottom: 0.75rem; font-size: 1.35rem; }
+    .card ul { list-style: disc inside; padding-left: 0.5rem; }
+
+    /* GALERIE */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--gap);
+      margin-top: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+    }
+
+    /* BOUTONS */
+    .btn-container { text-align: center; margin: 2rem 0 1rem; }
+    .btn {
+      background: var(--primary);
+      color: #000;
+      padding: 0.9rem 2.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: opacity 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    .btn:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <h1>SAE 2.03 – Gestion d’un Drive</h1>
+    <p>Développement d’une application web permettant à des clients de créer des commandes, de sélectionner des produits et d’obtenir un récapitulatif chiffré.</p>
+    <p><strong>English summary :</strong> Building a web app to manage a drive service with order creation, product selection and order recap.</p>
+  </section>
+
+  <main>
+    <div class="container">
+      <!-- ENGLISH SUMMARY SECTION -->
+      <div class="card">
+        <h2>English Summary</h2>
+        <p>We designed and deployed a full‑stack “drive” web service: relational schema modelling, Django&nbsp;5 development with MariaDB, containerisation via Gunicorn and an Nginx reverse‑proxy on a Debian VM.</p>
+        <p>The project covered the entire pipeline—from conception and Python coding to Linux administration and production deployment—and was carried out collaboratively on GitHub.</p>
+        <p>The application enables clients to create orders, browse products, and receive a detailed cost breakdown, providing a streamlined click‑and‑collect experience.</p>
+      </div>
+
+      <!-- OBJECTIF & COMPÉTENCES -->
+      <div class="grid-2">
+        <div class="card">
+          <h2>Objectif &amp; Contexte</h2>
+          <p>Nous avons conçu et déployé un service “drive” : modélisation du schéma produit-client, développement sous Django 5 relié à MariaDB, conteneurisation Gunicorn et reverse-proxy Nginx sur une VM Debian. Ce projet nous a permis de couvrir toute la chaîne — conception, code Python, administration Linux et mise en production — et de travailler efficacement en équipe sur Github.</p>
+        </div>
+        <div class="card">
+          <h2>Compétences développées</h2>
+          <ul>
+            <li>AC0311 : Utiliser un système informatique et ses outils</li>
+            <li>AC0312 : Lire, exécuter, corriger et modifier un programme</li>
+            <li>AC0313 : Traduire un algorithme dans un langage donné</li>
+            <li>AC0314 : Connaître l’architecture et les technologies d’un site Web</li>
+            <li>AC0315 : Choisir des mécanismes de gestion de données adaptés</li>
+            <li>AC0316 : S’intégrer dans un environnement collaboratif</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- APPORTS & PROBLÈMES -->
+      <div class="grid-2">
+        <div class="card">
+          <h2>Apports professionnels</h2>
+          <ul>
+            <li>Conception de schémas relationnels</li>
+            <li>Implémentation CRUD &amp; import CSV</li>
+            <li>Génération de rapports de commandes</li>
+            <li>Déploiement &amp; configuration Linux</li>
+            <li>Gestion de projet en équipe</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Problèmes rencontrés</h2>
+          <ul>
+            <li>Modélisation des relations plusieurs-à-plusieurs</li>
+            <li>Validation et parsing des fichiers d’import</li>
+            <li>Configuration du serveur SQL</li>
+            <li>Coordination des tâches entre membres</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- GALERIE -->
+      <div class="card">
+        <h2>Screenshots (cliquez pour agrandir)</h2>
+        <div class="gallery">
+          <img src="static/images/SAE2.03_capture1.png" alt="Schéma base de données" />
+          <img src="static/images/SAE2.03_capture2.png" alt="Diagramme de Gantt" />
+          <img src="static/images/SAE2.03_capture3.png" alt="Résultat site web" />
+        </div>
+      </div>
+
+      <!-- LIEN GITHUB -->
+      <div class="btn-container">
+        <a class="btn" href="https://github.com/alfatero/SAE/tree/main/SAE2.03/structure" target="_blank" rel="noopener">Voir sur GitHub</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img src="#" alt="Zoom" />
+  </div>
+
+  <footer>
+    © 2025 Léandro Berge
+  </footer>
+
+  <script>
+    /* Script Lightbox */
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = lightbox.querySelector('img');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lbImage.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+</html>
+
+
